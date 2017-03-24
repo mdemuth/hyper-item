@@ -6,7 +6,7 @@
 
 ## Concepts
 
-![Overview](hyper-item/img/diagram.png)
+![Overview](img/diagram.png)
 
 ### Item
 An item represents the state of a domain concept.
