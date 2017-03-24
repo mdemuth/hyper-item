@@ -1,0 +1,19 @@
+@startuml
+
+title hyper-item
+
+class Item
+class Property
+class Link
+class Action
+class Parameter
+
+Item *--> "*" Item: items
+Item *--> "*" Property: properties
+Item *--> "*" Link: links
+Item *--> "*" Action: actions
+
+Link *--> "*" Parameter: parameters
+Action *--> "*" Parameter: parameters
+
+@enduml
