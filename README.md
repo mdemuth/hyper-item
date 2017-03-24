@@ -1,2 +1,1 @@
-# hyper-item
-hyper-item
+# hyper-item: a hypermedia specification
