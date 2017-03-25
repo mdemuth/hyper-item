@@ -2,13 +2,239 @@
 
 ## Description
 
-Hyper-item is a hypermedia type that trys to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features at runtime via an API.
+Hyper-item is a hypermedia type that trys to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and subitems) at runtime.
 
-![UI](img/expanded-item.png)
+![item](img/Expanded-Item.png)
 
-The image above shows how a generic task-based UI might look like.
+The image above shows how an item in a generic task-based UI might look like.
+
+![collection](img/Collection.png)
+
+The image above shows a representation of a generic collection.
+
+![filter](img/Collection-Filter.png)
+
+The image above shows a representation of a generic filter component.
+
+![sort](img/Collection-Sort.png)
+
+The image above shows a representation of a generic sort component.
 
 ## Examples
+
+### A User Collection
+
+The following example shows a list of users configured within an auth service.  The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users Name in ascending order. 
+
+```json
+{
+    "label": "Users",
+    "type" : "users",
+    "items":[
+        {
+            "label": "Alice",
+            "type": "user",
+            "id": "0001",
+            "properties": [
+                {
+                    "label": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "value": "Alice"
+                },
+                {
+                    "label": "Status",
+                    "type": "text",
+                    "name": "status",
+                    "value": "activated",
+                    "display": "Activated"
+                },
+                {
+                    "label": "Last Login",
+                    "type": "date",
+                    "name": "last-login",
+                    "value": "2017-01-08T15:09:12Z",
+                    "display": "Jan 8, 2017"
+                }
+            ],
+            "links": [
+                {
+                    "label": "Details",
+                    "rel": "details",
+                    "href": "/auth/users/0001"
+                }
+            ]
+        },
+        {
+            "label": "Bob",
+            "type": "user",
+            "id": "0002",
+            "properties": [
+                {
+                    "label": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "value": "Bob"
+                },
+                {
+                    "label": "Status",
+                    "type": "text",
+                    "name": "status",
+                    "value": "deactivated",
+                    "display": "Deactivated"
+                },
+                {
+                    "label": "Last Login",
+                    "type": "date",
+                    "name": "last-login",
+                    "value": "2017-01-09T06:12:18Z",
+                    "display": "Jan 9, 2017"
+                }
+            ],
+            "links": [
+                {
+                    "label": "Details",
+                    "rel": "details",
+                    "href": "/auth/users/0002"
+                }
+            ]
+        }
+    ],
+    "links":[
+        {
+            "label": "Reload",
+            "rel": "self",
+            "href": "/auth/users/?sort=name,ASC&filter=last-login,lt,2017-01-09T12:00:00Z"
+        },
+        {
+            "label": "Filter",
+            "rel": "filter",
+            "template": "/auth/users/?sort=name,ASC{&filter*}",
+            "parameters": [
+                {
+                    "name": "filter",
+                    "type": "filter",
+                    "components": [
+                        {
+                            "label": "Name",
+                            "name": "name",
+                            "type": "text",
+                            "operators": [
+                                {
+                                    "label": "Like",
+                                    "operator": "like"
+                                },
+                                {
+                                    "label": "Not Like",
+                                    "operator": "nlike"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Status",
+                            "name": "status",
+                            "type": "select",
+                            "operators": [
+                                {
+                                    "label": "=",
+                                    "operator": "eq"
+                                },
+                                {
+                                    "label": "!=",
+                                    "operator": "neq"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "Activated",
+                                    "value": "activated"
+                                },    
+                                {
+                                    "label": "Deactivated",
+                                    "value": "deactivated"
+                                }                              
+                            ]
+                        },
+                        {
+                            "label": "Last Login",
+                            "name": "last-login",
+                            "type": "date",
+                            "operators": [
+                                {
+                                    "label": "Before",
+                                    "operator": "lt"
+                                },
+                                {
+                                    "label": "After",
+                                    "operator": "gt"
+                                }
+                            ]
+                        },
+                    ],
+                    "value": [
+                        {
+                            "name": "last-login",
+                            "operator": "<",
+                            "value": "2017-01-09T12:00:00Z"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Sort",
+            "rel": "sort",
+            "template": "/auth/users/?filter=last-login,lt,2017-01-09T12:00:00Z{&sort*}",
+            "parameters": [
+                {
+                    "name": "sort",
+                    "type": "sort",
+                    "components":[
+                        {
+                            "label": "Name",
+                            "name": "name",
+                            "orders": [
+                                {
+                                    "label": "ascending",
+                                    "order": "ASC",
+                                }
+                                {
+                                    "label": "descending",
+                                    "order": "DESC",
+                                }
+                            ]
+                        }
+                        {
+                            "label": "Last Login",
+                            "name": "last-login",
+                            "orders": [
+                                {
+                                    "label": "ascending",
+                                    "order": "ASC",
+                                }
+                                {
+                                    "label": "descending",
+                                    "order": "DESC",
+                                }
+                            ]
+                        }
+                    ],
+                    "value": [
+                        {
+                            "name": "name",
+                            "order": "ASC"
+                        }
+                    ],
+                }
+            ],
+        },
+    ]
+}
+```
+
+### A Users Details
+
+TODO
 
 ## Concepts
 
