@@ -2,13 +2,19 @@
 
 ## Description
 
+Hyper-item is a hypermedia type that trys to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features at runtime via an API.
+
+![UI](img/expanded-item.png)
+
+The image above shows how a generic task-based UI might look like.
+
 ## Examples
 
 ## Concepts
 
 ![Overview](img/diagram.png)
 
-### Item
+### <a name="item"></a> Item
 An item represents the state of a domain concept.
 
 #### `type`        
@@ -21,13 +27,13 @@ Describes the relation of the item to its parent. Possible values are subject to
 A document local identifier for the item that may be used as the target of URL fragments.
 
 #### `properties`  
-A list of properties describing the current state of the item.
+A list of [properties](#property) describing the current state of the item.
 
 #### `links`
-A list of links related to the item. A root item should include a link with `rel` to `self` with the cannonical `href` for this item.
+A list of [links](#link) related to the item. A root item should include a link with `rel` to `self` with the cannonical `href` for this item.
 
 #### `actions`
-A list of actions related to the item.
+A list of [actions](#action) related to the item.
 
 #### `items`
 A list of (sub-)items related to the item.
@@ -46,8 +52,8 @@ A localized description of the item.
 
 
 
-### Property
-A property represents a part of the state of an item. 
+### <a name="property"></a> Property
+A property represents a part of the state of an [item](#item). 
 
 #### `name`
 The name of the property. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`.
@@ -68,20 +74,20 @@ The type of the property.
 - ...
 
 #### `label`
-A localized label for the property based on the `Accept-Language` - Header. 
+A localized label for the property. 
 
 #### `description`
-A localized description of the property based on the `Accept-Language` - Header.
+A localized description of the property.
 
 #### `display`
-A localized string representation of the value based on the `Accept-Language` - Header.
+A localized string representation of the value.
 
 
 
 
-### Link
+### <a name="link"></a> Link
 
-Links the item to another concept. The fields `href` and `template` with `parameters` are mutually exclusive. Links should be resolved via the HTTP method GET.
+Links the [item](#item) to another concept. The fields `href` and `template` with `parameters` are mutually exclusive. Links should be resolved via the HTTP method GET.
 
 #### `rel`
 The relation of the link to its item.
@@ -98,10 +104,10 @@ The relation of the link to its item.
 The URL of the target. Links should be resolved via the HTTP method `GET`.
 
 #### `template`
-A URL template.
+A URI template as defined by [RFC 6570 - URI Template](https://tools.ietf.org/html/rfc6570).
 
 #### `parameters`
-Parameters that are used within the URL template.
+Parameters that are used within the URI template.
 
 #### `type`
 The media type of the target.
@@ -112,17 +118,17 @@ A rendering hint.
 - `none` in case the link should not be rendered (candidate: `rel: profile`).
 
 #### `label`
-A localized label for the link based on the `Accept-Language` - Header. 
+A localized label for the link. 
 
 #### `description`
-A localized description of the link based on the `Accept-Language` - Header. 
+A localized description of the link. 
 
 
 
-### Action
+### <a name="action"></a> Action
 
 #### `rel`
-The relation of the action to the item. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
+The relation of the action to the [item](#item). Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
 
 #### `href`
 The URL of the target.
@@ -162,7 +168,7 @@ A localized cancel label for the action.
 
 
 
-### Parameter
+### <a name="parameter"></a> Parameter
 
 #### `name`
 The name of the parameter.
@@ -174,13 +180,13 @@ The type of the parameter.
 The currently used or default value.
 
 #### `options`
-A list of select-options or select-groups for a select type parameter.
+A list of [select-options](#select-options) or [select-groups](#select-groups) for a select type parameter.
 
 #### `related`
-The web-related select-options or select-groups for a select type parameter.
+The web-related [select-options](#select-options) or [select-groups](#select-groups) for a select type parameter.
 
 #### `components`
-A list of sort-components for a sort type parmeter. A list of filter-components for a filter type parameter.
+A list of [sort-components](#sort-component) for a sort type parmeter. A list of [filter-components](#filter-component) for a filter type parameter.
 
 #### `pattern`
 A pattern for a text type parameter.
@@ -222,7 +228,7 @@ A localized description of the link.
 
 
 
-### Select Option
+### <a name="select-option"></a> Select Option
 
 #### `value`
 The value of a select-option.
@@ -236,7 +242,7 @@ A localized description of the select-option.
 
 
 
-### Select Group
+### <a name="select-group"></a> Select Group
 
 #### `options`
 A list of select-options or select-groups for a select-group.
@@ -252,13 +258,13 @@ A localized description of the select-group.
 
 
 
-### Filter Component
+### <a name="filter-component"></a> Filter Component
 
 #### `name`
 The name of the filter component.
 
 #### `operators`
-A list of possible filter operators for the filter component.
+A list of possible filter [operators](#filter-operator) for the filter component.
 
 #### `type`
 The type of value to be set.
@@ -280,7 +286,7 @@ A localized description of the filter component.
 
 
 
-### Filter Operator
+### <a name="filter-operator"></a> Filter Operator
 
 #### `operator`
 The operator that should be used.
@@ -312,15 +318,13 @@ If the operator has an infix part this is a localized infix text.  (`bet`: `star
 
 
 
-### Sort Component
+### <a name="sort-component"></a> Sort Component
 
 #### `name`
 The name of the sort component.
 
 #### `orders`
-A list of possible sort orders of the sort component.
-- `ASC` ascending
-- `DESC` descending
+A list of possible sort [orders](#sort-order) of the sort component.
 
 #### `label`
 A localized label for the sort component. 
@@ -330,7 +334,7 @@ A localized description of the sort component.
 
 
 
-### Sort Order
+### <a name="sort-order"></a> Sort Order
 
 #### `label` 
 A localized label for the sort order.
@@ -340,5 +344,21 @@ A localized description of the sort order.
 
 #### `order`
 The order that should be used.  
+- `ASC` ascending
+- `DESC` descending
 
 ## Related Material
+
+[collection+json](http://amundsen.com/media-types/collection/)
+
+[siren](https://github.com/kevinswiber/siren)
+
+[RFC 3986 - URI] (https://tools.ietf.org/html/rfc3986)
+
+[RFC 6570 - URI Template](https://tools.ietf.org/html/rfc6570)
+
+[e4 application model](http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fe4%2Fui%2Fmodel%2Fapplication%2Fpackage-summary.html)
+
+[Task-Based UI](https://cqrs.wordpress.com/documents/task-based-ui/)
+
+[Inductive UI](https://msdn.microsoft.com/en-us/library/ms997506.aspx)
