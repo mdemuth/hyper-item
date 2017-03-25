@@ -579,11 +579,9 @@ The order that should be used.
 
 [siren](https://github.com/kevinswiber/siren)
 
-[RFC 3986 - URI] (https://tools.ietf.org/html/rfc3986)
+[RFC 3986 - URI](https://tools.ietf.org/html/rfc3986)
 
 [RFC 6570 - URI Template](https://tools.ietf.org/html/rfc6570)
-
-[e4 application model](http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fe4%2Fui%2Fmodel%2Fapplication%2Fpackage-summary.html)
 
 [Task-Based UI](https://cqrs.wordpress.com/documents/task-based-ui/)
 
