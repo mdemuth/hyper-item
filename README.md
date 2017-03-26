@@ -800,10 +800,6 @@ An error code.
 - Since we are using `each()` in our representation logic new properties, links and actions may appear at runtime. 
 - The concepts used in this specification are build so that you may reduce context at each step during representation. For example if you need to display an action for renaming a user this action will have a name parameter with the value set to the current users name. This enables you to loose the reference to the user item entirely. Another example would be the users name property that holds every piece of information needed to represent a text property.
 
-### Real applications are more complex. What about perspectives, views and editors?
-
-[Let's design an *application model*](application-model.md)
-
 
 ## Related Material
 
