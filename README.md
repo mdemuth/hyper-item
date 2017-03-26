@@ -28,9 +28,7 @@ The image above shows a representation of a generic sort component.
 
 ### A User Collection
 
-The following example shows a list of users configured within an exemplary auth service.  
-The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users Name in ascending order. 
-A new user may be added to this collection by means of submitting the `add-user` action.
+The following example shows a list of users configured within an exemplary auth service. The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users Name in ascending order. A new user may be added to this collection by means of submitting the `add-user` action.
 
 ```json
 {
@@ -260,7 +258,182 @@ A new user may be added to this collection by means of submitting the `add-user`
 
 ### A Users Details
 
-TODO
+The following example shows a users details within our exemplary auth service. A user has a set of claims. Hidden parameters in actions are used to transfer enough information to the service to know wich action is being submitted. Clients always need to send any hidden parameters within the message Body.   
+
+```json
+{
+    "label": "Alice",
+    "type": "user",
+    "id": "0001",
+    "properties": [
+        {
+            "label": "Name",
+            "type": "text",
+            "name": "name",
+            "value": "Alice"
+        },
+        {
+            "label": "Status",
+            "type": "text",
+            "name": "status",
+            "value": "activated",
+            "display": "Activated"
+        },
+        {
+            "label": "Last Login",
+            "type": "date",
+            "name": "last-login",
+            "value": "2017-01-08T15:09:12Z",
+            "display": "Jan 8, 2017"
+        }
+    ],
+    "items": [
+        {
+            "label": "Claims",
+            "rel": "claims",
+            "type": "claims",
+            "items": [
+                {
+                    "label": "role → admin",
+                    "type": "claim",
+                    "properties": [
+                        {
+                            "label": "Type",
+                            "name": "type",
+                            "type": "text",
+                            "value": "role"
+                        },
+                        {
+                            "label": "Value",
+                            "name": "value",
+                            "type": "text",
+                            "value": "admin"
+                        }
+                    ],
+                    "actions": [
+                        {
+                            "label": "Remove Claim",
+                            "rel": "remove-claim",
+                            "href": "/auth/users/0001",
+                            "type": "application/json",
+                            "method": "POST",
+                            "parameters": [
+                                {
+                                    "type": "hidden",
+                                    "name": "@profile",
+                                    "value": "remove-claim"
+                                },
+                                {
+                                    "type": "hidden",
+                                    "name": "type",
+                                    "value": "role"
+                                },
+                                {
+                                    "type": "hidden",
+                                    "name": "value",
+                                    "value": "admin"
+                                }
+                            ],
+                            "context": "name",
+                            "ok": "Remove Claim",
+                            "cancel": "Cancel"
+                        }
+                    ]
+                }
+            ],
+            "actions": [
+                {
+                    "label": "Add Claim",
+                    "rel": "add-claim",
+                    "href": "/auth/users/0001",
+                    "type": "application/json",
+                    "method": "POST",
+                    "parameters": [
+                        {
+                            "type": "hidden",
+                            "name": "@profile",
+                            "value": "add-claim"
+                        },
+                        {
+                            "label": "Type",
+                            "type": "text",
+                            "name": "type",
+                            "required": true
+                        },
+                        {
+                            "label": "Value",
+                            "type": "text",
+                            "name": "value",
+                            "required": true
+                        }
+                    ],
+                    "context": "name",
+                    "ok": "Add Claim",
+                    "cancel": "Cancel"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "label": "Reload",
+            "rel": "self",
+            "href": "/auth/users/0001"
+        }
+    ],
+    "actions": [
+        {
+            "label": "Rename",
+            "rel": "rename",
+            "href": "/auth/users/0001",
+            "type": "application/json",
+            "method": "POST",
+            "parameters": [
+                {
+                    "type": "hidden",
+                    "name": "@profile",
+                    "value": "rename"
+                },
+                {
+                    "label": "Name",
+                    "type": "text",
+                    "name": "name",
+                    "value": "Alice",
+                    "required": true
+                }
+            ],
+            "context": "name",
+            "ok": "Rename",
+            "cancel": "Cancel"
+        },
+        {
+            "label": "Deactivate",
+            "rel": "deactivate",
+            "href": "/auth/users/0001",
+            "type": "application/json",
+            "method": "POST",
+            "parameters": [
+                {
+                    "type": "hidden",
+                    "name": "@profile",
+                    "value": "deactivate"
+                }
+            ],
+            "context": "status",
+            "ok": "Deactivate",
+            "cancel": "Cancel"
+        },
+        {
+            "label": "Delete",
+            "rel": "delete",
+            "href": "/auth/users/0001",
+            "method": "DELETE",
+            "ok": "Delete",
+            "cancel": "Cancel"
+        }
+    ]
+}
+```
 
 ## Concepts
 
