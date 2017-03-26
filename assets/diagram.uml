@@ -7,13 +7,18 @@ class Property
 class Link
 class Action
 class Parameter
+class Error
 
 Item *--> "*" Item: items
 Item *--> "*" Property: properties
 Item *--> "*" Link: links
 Item *--> "*" Action: actions
+Item *--> "*" Error: errors
 
 Link *--> "*" Parameter: parameters
 Action *--> "*" Parameter: parameters
+
+hide members
+hide methods
 
 @enduml

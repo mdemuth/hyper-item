@@ -12,6 +12,10 @@ The image above shows how an item in a generic task-based UI might look like.
 
 The image above shows a representation of a generic collection.
 
+![action](img/Collection-Action.png)
+
+The image abovw shows a representation of a generic action component.
+
 ![filter](img/Collection-Filter.png)
 
 The image above shows a representation of a generic filter component.
@@ -24,7 +28,9 @@ The image above shows a representation of a generic sort component.
 
 ### A User Collection
 
-The following example shows a list of users configured within an auth service.  The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users Name in ascending order. 
+The following example shows a list of users configured within an exemplary auth service.  
+The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users Name in ascending order. 
+A new user may be added to this collection by means of submitting the `add-user` action.
 
 ```json
 {
@@ -174,7 +180,7 @@ The following example shows a list of users configured within an auth service.  
                     "value": [
                         {
                             "name": "last-login",
-                            "operator": "<",
+                            "operator": "lt",
                             "value": "2017-01-09T12:00:00Z"
                         }
                     ]
@@ -228,6 +234,26 @@ The following example shows a list of users configured within an auth service.  
                 }
             ],
         },
+    ],
+    "actions": [
+        {
+            "label": "Add User",
+            "rel": "add-user",
+            "href": "/auth/users/",
+            "type": "application/json",
+            "method": "POST",
+            "parameters": [
+                {
+                    "type": "text",
+                    "label": "Name",
+                    "name": "name",
+                    "value": "New User",
+                    "required": true 
+                }
+            ],
+            "ok": "Add",
+            "cancel": "Cancel"
+        }
     ]
 }
 ```
@@ -572,6 +598,22 @@ A localized description of the sort order.
 The order that should be used.  
 - `ASC` ascending
 - `DESC` descending
+
+### <a name="error"></a> Error
+
+#### `label` 
+A localized label for the error.
+
+#### `description`
+A localized description of the error.
+
+
+#### `message`
+A localized message of the error.
+
+#### `code`
+An error code.
+
 
 ## Related Material
 
