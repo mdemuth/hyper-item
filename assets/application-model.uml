@@ -1,0 +1,17 @@
+@startuml
+
+title application-model
+
+class Suite
+class Application
+class Perspective
+class Part
+
+Suite *--> "*" Application: applications
+Application *--> "*" Perspective: perspectives
+Perspective *--> "*" Part: parts
+
+hide members
+hide methods
+
+@enduml

@@ -788,6 +788,23 @@ A localized message of the error.
 An error code.
 
 
+
+
+## FAQ
+
+### Why use all the arrays instead of hashes/objects?
+
+- Arrays have a predefined order. An Object is an unordered collection of properties.
+- Arrays enable the use of `each()`, `filter()`, `sortBy()` and `keyBy()`.
+- In a context where each property, link, and action is subject to authentication access rules a client may never know which of these actually exist. And in such a context indexing by key will never be a good idea, but you may always use `keyBy()`.
+- Since we are using `each()` in our representation logic new properties, links and actions may appear at runtime. 
+- The concepts used in this specification are build so that you may reduce context at each step during representation. For example if you need to display an action for renaming a user this action will have a name parameter with the value set to the current users name. This enables you to loose the reference to the user item entirely. Another example would be the users name property that holds every piece of information needed to represent a text property.
+
+### Real applications are more complex. What about perspectives, views and editors?
+
+[Let's design an *application model*](application-model.md)
+
+
 ## Related Material
 
 [collection+json](http://amundsen.com/media-types/collection/)
