@@ -437,7 +437,7 @@ The following example shows a users details within our exemplary auth service. A
 
 ## Concepts
 
-![Overview](img/diagram.png)
+![Overview](img/hyper-item.png)
 
 ### <a name="item"></a> Item
 An item represents the state of a domain concept.
