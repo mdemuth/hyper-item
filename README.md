@@ -256,6 +256,40 @@ The following example shows a list of users configured within an exemplary auth 
 }
 ```
 
+#### Add User
+
+```
+POST /auth/users/ HTTP/1.1
+Host: www.example.com
+Content-Type: application/json
+
+
+{
+    "name": "New Users Name"
+}
+```
+
+#### Filter
+
+Each filter component leads to an `&filter` query part in the URL. Each of those has a list of comma seperated values with at least three parts: *name*,*operator*,*value*. If the value is an array then each of these will in turn be seperated by a comma.
+
+```
+GET /auth/users/?sort=name,ASC&filter=last-login,lt,2017-01-09T12:00:00Z HTTP/1.1
+Host: www.example.com
+
+```
+
+#### Sort
+
+Each sort component leads to an `&sort` query part in the URL. Each of those has a list of comma seperated values with exactly two parts: *name*,*order*.
+
+```
+GET /auth/users/?filter=last-login,lt,2017-01-09T12:00:00Z&sort=name,ASC HTTP/1.1
+Host: www.example.com
+
+```
+
+
 ### A Users Details
 
 The following example shows a users details within our exemplary auth service. A user has a set of claims. Hidden parameters in actions are used to transfer enough information to the service to know wich action is being submitted. Clients always need to send any hidden parameters within the message Body.   
@@ -432,6 +466,71 @@ The following example shows a users details within our exemplary auth service. A
             "cancel": "Cancel"
         }
     ]
+}
+```
+
+#### Rename
+
+```
+POST /auth/users/0001 HTTP/1.1
+Host: www.example.com
+Content-Type: application/json
+
+
+{
+    "@profile": "rename",
+    "name": "Alice (new)"
+}
+```
+
+#### Deactivate
+
+```
+POST /auth/users/0001 HTTP/1.1
+Host: www.example.com
+Content-Type: application/json
+
+
+{
+    "@profile": "deactivate"
+}
+```
+
+#### Delete
+
+```
+DELETE /auth/users/0001 HTTP/1.1
+Host: www.example.com
+
+```
+
+#### Add Claim
+
+```
+POST /auth/users/0001 HTTP/1.1
+Host: www.example.com
+Content-Type: application/json
+
+
+{
+    "@profile": "add-claim",
+    "type": "role",
+    "value": "simple-user"
+}
+```
+
+#### Remove Claim
+
+```
+POST /auth/users/0001 HTTP/1.1
+Host: www.example.com
+Content-Type: application/json
+
+
+{
+    "@profile": "remove-claim",
+    "type": "role",
+    "value": "admin"
 }
 ```
 
@@ -786,7 +885,6 @@ A localized message of the error.
 
 #### `code`
 An error code.
-
 
 
 
