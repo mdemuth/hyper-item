@@ -1,6 +1,6 @@
 # hyper-item: a hypermedia specification
 
-## Description
+## 1. Description
 
 Hyper-item is a hypermedia type that trys to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and subitems) at runtime.
 
@@ -24,7 +24,7 @@ The image above shows a representation of a generic filter component.
 
 The image above shows a representation of a generic sort component.
 
-## Examples
+## 2. Examples
 
 ### A User Collection
 
@@ -534,58 +534,58 @@ Content-Type: application/json
 }
 ```
 
-## Concepts
+## 3. Concepts
 
 ![Overview](img/hyper-item.png)
 
-### <a name="item"></a> Item
+### 3.1. Item
 An item represents the state of a domain concept.
 
-#### `type`        
+#### 3.1.1. `type`        
 Describes the type of the item. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
 
-#### `rel`         
+#### 3.1.2. `rel`         
 Describes the relation of the item to its parent. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
 
-#### `id`          
+#### 3.1.3. `id`          
 A document local identifier for the item that may be used as the target of URL fragments.
 
-#### `properties`  
-A list of [properties](#property) describing the current state of the item.
+#### 3.1.4. `properties`  
+A list of [properties](#32-property) describing the current state of the item.
 
-#### `links`
-A list of [links](#link) related to the item. A root item should include a link with `rel` to `self` with the cannonical `href` for this item.
+#### 3.1.5. `links`
+A list of [links](#33-link) related to the item. A root item should include a link with `rel` to `self` with the cannonical `href` for this item.
 
-#### `actions`
-A list of [actions](#action) related to the item.
+#### 3.1.6. `actions`
+A list of [actions](#34-action) related to the item.
 
-#### `items`
+#### 3.1.7. `items`
 A list of (sub-)items related to the item.
 
-#### `render`
+#### 3.1.8. `render`
 A rendering hint. 
 - `item` in case the default rendering should be used (may be omitted)
 - `none` in case the item should not be rendered. Can be used to provide local URL fragment targets that do not naturally fit into the standard tree hierarchy.
 - `transclude` in case the item should be replaced with an item targeted by a link  with `rel` to `details`. (i.e. server-side includes, edge-side includes, resource contributions).
 
-#### `label`       
+#### 3.1.9. `label`       
 A localized label for the item. 
 
-#### `description` 
+#### 3.1.10. `description` 
 A localized description of the item.
 
 
 
-### <a name="property"></a> Property
-A property represents a part of the state of an [item](#item). 
+### 3.2. Property
+A property represents a part of the state of an [item](#31-item). 
 
-#### `name`
+#### 3.2.1. `name`
 The name of the property. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`.
 
-#### `value`
+#### 3.2.2. `value`
 The value of the property. 
 
-#### `type`
+#### 3.2.3. `type`
 The type of the property.
 
 - `date`
@@ -597,23 +597,23 @@ The type of the property.
 - `select`
 - ...
 
-#### `label`
+#### 3.2.4. `label`
 A localized label for the property. 
 
-#### `description`
+#### 3.2.5. `description`
 A localized description of the property.
 
-#### `display`
+#### 3.2.6. `display`
 A localized string representation of the value.
 
 
 
 
-### <a name="link"></a> Link
+### 3.3. Link
 
-Links the [item](#item) to another concept. The fields `href` and `template` with `parameters` are mutually exclusive. Links should be resolved via the HTTP method GET.
+Links the [item](#31-item) to another concept. The fields `href` and `template` with `parameters` are mutually exclusive. Links should be resolved via the HTTP method GET.
 
-#### `rel`
+#### 3.3.1. `rel`
 The relation of the link to its item.
 - `self` The `href` should point to the cannonical URL for this item.
 - `details` The `href` should point to more detailed information about the item.
@@ -624,40 +624,40 @@ The relation of the link to its item.
 - `profile` should be used to describe item `types`, `rels` and property `names`.
 - ...
 
-#### `href`
+#### 3.3.2. `href`
 The URL of the target. Links should be resolved via the HTTP method `GET`.
 
-#### `template`
+#### 3.3.3. `template`
 A URI template as defined by [RFC 6570 - URI Template](https://tools.ietf.org/html/rfc6570).
 
-#### `parameters`
+#### 3.3.4. `parameters`
 Parameters that are used within the URI template.
 
-#### `type`
+#### 3.3.5. `type`
 The media type of the target.
 
-#### `render`
+#### 3.3.6. `render`
 A rendering hint.
 - `link` in case the default rendering should be used (may be omitted)
 - `none` in case the link should not be rendered (candidate: `rel: profile`).
 
-#### `label`
+#### 3.3.7. `label`
 A localized label for the link. 
 
-#### `description`
+#### 3.3.8. `description`
 A localized description of the link. 
 
 
 
-### <a name="action"></a> Action
+### 3.4. Action
 
-#### `rel`
-The relation of the action to the [item](#item). Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
+#### 3.4.1. `rel`
+The relation of the action to the [item](#31-item). Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
 
-#### `href`
+#### 3.4.2. `href`
 The URL of the target.
 
-#### `method`
+#### 3.4.3. `method`
 The HTTP Method to use.
 - `POST`
 - `PATCH`
@@ -665,116 +665,116 @@ The HTTP Method to use.
 - `DELETE`
 
 
-#### `type`
+#### 3.4.4. `type`
 The media type of the action payload.
 - `application/x-www-form-urlencoded`
 - `application/json`
 - ...
 
-#### `parameters`
+#### 3.4.5. `parameters`
 Parameters that will need to be sent.
 
-#### `context`
+#### 3.4.6. `context`
 Marks a parameter as the actions context. If a parameters name would be *hair-color* and this action would represent *change-hair-color* then a generic representer could use *context:hair-color* to move the action closer to the representation of the property.
 
-#### `label`
+#### 3.4.7. `label`
 A localized label for the action.  
 
-#### `description`
+#### 3.4.8. `description`
 A localized description of the action.
 
-#### `ok`
+#### 3.4.9. `ok`
 A localized ok/submit label for the action.
 
-#### `cancel`
+#### 3.4.10. `cancel`
 A localized cancel label for the action.
 
 
 
 
-### <a name="parameter"></a> Parameter
+### 3.5. Parameter
 
-#### `name`
+#### 3.5.1. `name`
 The name of the parameter.
 
-#### `type`
+#### 3.5.2. `type`
 The type of the parameter.
 
-#### `value`
+#### 3.5.3. `value`
 The currently used or default value.
 
-#### `options`
-A list of [select-options](#select-options) or [select-groups](#select-groups) for a select type parameter.
+#### 3.5.4. `options`
+A list of [select-options](#36-select-option) or [select-groups](#37-select-group) for a select type parameter.
 
-#### `related`
-The web-related [select-options](#select-options) or [select-groups](#select-groups) for a select type parameter.
+#### 3.5.6. `related`
+The web-related [select-options](#36-select-option) or [select-groups](#37-select-group) for a select type parameter.
 
-#### `components`
-A list of [sort-components](#sort-component) for a sort type parmeter. A list of [filter-components](#filter-component) for a filter type parameter.
+#### 3.5.7. `components`
+A list of [filter-components](#38-filter-component) for a filter type parameter. A list of [sort-components](#310-sort-component) for a sort type parmeter. 
 
-#### `pattern`
+#### 3.5.8. `pattern`
 A pattern for a text type parameter.
 
-#### `min`
+#### 3.5.9. `min`
 A min value for a number or date type parameter.
 
-#### `max`
+#### 3.5.10. `max`
 A max value for a number or date type parameter.
 
-#### `max-length`
+#### 3.5.11. `max-length`
 
-#### `size`
+#### 3.5.12. `size`
 
-#### `step`
+#### 3.5.13. `step`
 The step size of number type parameters.
 
-#### `cols`
+#### 3.5.14. `cols`
 The number of columns in a text-area type parameter.
 
-#### `rows`
+#### 3.5.15. `rows`
 The number of rows in a text-area type paramenter.
 
-#### `required`
+#### 3.5.16. `required`
 Specifies if the parameter is required.
 
-#### `read-only`
+#### 3.5.17. `read-only`
 Specifies if the parameter is read only.
 
-#### `multiple`
+#### 3.5.18. `multiple`
 Specifies if the parameter may be set multiple times.
 
-#### `label`
+#### 3.5.19. `label`
 A localized label for the link.
 
-#### `description`
+#### 3.5.20. `description`
 A localized description of the link.
 
 
 
 
-### <a name="select-option"></a> Select Option
+### 3.6. Select Option
 
-#### `value`
+#### 3.6.1. `value`
 The value of a select-option.
 
-#### `label`
+#### 3.6.2. `label`
 A localized label for the select-option.
 
-#### `description`
+#### 3.6.3. `description`
 A localized description of the select-option.
 
 
 
 
-### <a name="select-group"></a> Select Group
+### 3.7. Select Group
 
-#### `options`
+#### 3.7.1. `options`
 A list of select-options or select-groups for a select-group.
 
-#### `label`
+#### 3.7.2. `label`
 A localized label for the select-group.
 
-#### `description`
+#### 3.7.3. `description`
 A localized description of the select-group.
 
 
@@ -782,37 +782,37 @@ A localized description of the select-group.
 
 
 
-### <a name="filter-component"></a> Filter Component
+### 3.8. Filter Component
 
-#### `name`
+#### 3.8.1. `name`
 The name of the filter component.
 
-#### `operators`
-A list of possible filter [operators](#filter-operator) for the filter component.
+#### 3.8.2. `operators`
+A list of possible filter [operators](#39-filter-operator) for the filter component.
 
-#### `type`
+#### 3.8.3. `type`
 The type of value to be set.
 
-#### `options`
+#### 3.8.4. `options`
 The select-options for a select type filter component.
 
-#### `related`
+#### 3.8.5. `related`
 The web-related select-options for a select type filter component.
 
-#### `multiple`
+#### 3.8.6. `multiple`
 Specifies if the value is an array.
 
-#### `label`
+#### 3.8.7. `label`
 A localized label for the filter component.
 
-#### `description` 
+#### 3.8.8. `description` 
 A localized description of the filter component.
 
 
 
-### <a name="filter-operator"></a> Filter Operator
+### 3.9. Filter Operator
 
-#### `operator`
+#### 3.9.1. `operator`
 The operator that should be used.
 - `eq` equal
 - `neq` not equal
@@ -829,66 +829,67 @@ The operator that should be used.
 - ...
 
 
-#### `label`
+#### 3.9.2. `label`
 A localized label for the filter operator. 
 
-#### `description`
+#### 3.9.3. `description`
 A localized description of the filter operator.
 
-#### `infix`
+#### 3.9.4. `infix`
 If the operator has an infix part this is a localized infix text.  (`bet`: `start` **and** `end`)
 
 
 
 
 
-### <a name="sort-component"></a> Sort Component
+### 3.10. Sort Component
 
-#### `name`
+#### 3.10.1. `name`
 The name of the sort component.
 
-#### `orders`
-A list of possible sort [orders](#sort-order) of the sort component.
+#### 3.10.2. `orders`
+A list of possible sort [orders](#311-sort-order) of the sort component.
 
-#### `label`
+#### 3.10.3. `label`
 A localized label for the sort component. 
 
-#### `description`
+#### 3.10.4. `description`
 A localized description of the sort component.
 
 
 
-### <a name="sort-order"></a> Sort Order
+### 3.11. Sort Order
 
-#### `label` 
+#### 3.11.1. `label` 
 A localized label for the sort order.
 
-#### `description`
+#### 3.11.2. `description`
 A localized description of the sort order.
 
-#### `order`
+#### 3.11.3. `order`
 The order that should be used.  
 - `ASC` ascending
 - `DESC` descending
 
-### <a name="error"></a> Error
 
-#### `label` 
+
+### 3.12. Error
+
+#### 3.12.1. `label` 
 A localized label for the error.
 
-#### `description`
+#### 3.12.2. `description`
 A localized description of the error.
 
-
-#### `message`
+#### 3.12.3. `message`
 A localized message of the error.
 
-#### `code`
+#### 3.12.4. `code`
 An error code.
 
 
 
-## FAQ
+## 4. FAQ
 
 ### Why use all the arrays instead of hashes/objects?
 
@@ -899,7 +900,7 @@ An error code.
 - The concepts used in this specification are build so that you may reduce context at each step during representation. For example if you need to display an action for renaming a user this action will have a name parameter with the value set to the current users name. This enables you to loose the reference to the user item entirely. Another example would be the users name property that holds every piece of information needed to represent a text property.
 
 
-## Related Material
+## 5. Related Material
 
 [collection+json](http://amundsen.com/media-types/collection/)
 
