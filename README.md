@@ -26,7 +26,7 @@ The image above shows a representation of a generic sort component.
 
 ## 2. Examples
 
-### A User Collection
+### 2.1. A User Collection
 
 The following example shows a list of users configured within an exemplary auth service. The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users Name in ascending order. A new user may be added to this collection by means of submitting the `add-user` action.
 
@@ -256,7 +256,7 @@ The following example shows a list of users configured within an exemplary auth 
 }
 ```
 
-#### Add User
+#### 2.1.1. Add User
 
 ```
 POST /auth/users/ HTTP/1.1
@@ -269,7 +269,7 @@ Content-Type: application/json
 }
 ```
 
-#### Filter
+#### 2.1.2. Filter
 
 Each filter component leads to an `&filter` query part in the URL. Each of those has a list of comma seperated values with at least three parts: *name*,*operator*,*value*. If the value is an array then each of these will in turn be seperated by a comma.
 
@@ -279,7 +279,7 @@ Host: www.example.com
 
 ```
 
-#### Sort
+#### 2.1.3. Sort
 
 Each sort component leads to an `&sort` query part in the URL. Each of those has a list of comma seperated values with exactly two parts: *name*,*order*.
 
@@ -290,7 +290,7 @@ Host: www.example.com
 ```
 
 
-### A Users Details
+### 2.2. A Users Details
 
 The following example shows a users details within our exemplary auth service. A user has a set of claims. Hidden parameters in actions are used to transfer enough information to the service to know wich action is being submitted. Clients always need to send any hidden parameters within the message Body.   
 
@@ -469,7 +469,7 @@ The following example shows a users details within our exemplary auth service. A
 }
 ```
 
-#### Rename
+#### 2.2.1. Rename
 
 ```
 POST /auth/users/0001 HTTP/1.1
@@ -483,7 +483,7 @@ Content-Type: application/json
 }
 ```
 
-#### Deactivate
+#### 2.2.2. Deactivate
 
 ```
 POST /auth/users/0001 HTTP/1.1
@@ -496,7 +496,7 @@ Content-Type: application/json
 }
 ```
 
-#### Delete
+#### 2.2.3. Delete
 
 ```
 DELETE /auth/users/0001 HTTP/1.1
@@ -504,7 +504,7 @@ Host: www.example.com
 
 ```
 
-#### Add Claim
+#### 2.2.4. Add Claim
 
 ```
 POST /auth/users/0001 HTTP/1.1
@@ -519,7 +519,7 @@ Content-Type: application/json
 }
 ```
 
-#### Remove Claim
+#### 2.2.5. Remove Claim
 
 ```
 POST /auth/users/0001 HTTP/1.1
@@ -891,7 +891,7 @@ An error code.
 
 ## 4. FAQ
 
-### Why use all the arrays instead of hashes/objects?
+### Why use arrays instead of hashes/objects?
 
 - Arrays have a predefined order. An Object is an unordered collection of properties.
 - Arrays enable the use of `each()`, `filter()`, `sortBy()` and `keyBy()`.
