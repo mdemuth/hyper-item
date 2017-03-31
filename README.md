@@ -4,6 +4,8 @@
 
 Hyper-item is a hypermedia type that trys to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and subitems) at runtime.
 
+If you have a *hyper-item*-client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net) and feel free to follow links and submit actions.
+
 ![item](img/Expanded-Item.png)
 
 The image above shows how an item in a generic task-based UI might look like.
@@ -703,7 +705,10 @@ The type of the parameter.
 #### 3.5.3. `value`
 The currently used or default value.
 
-#### 3.5.4. `options`
+#### 3.5.4. `placeholder`
+The placeholder to use if no default value is provided.
+
+#### 3.5.5. `options`
 A list of [select-options](#36-select-option) or [select-groups](#37-select-group) for a select type parameter.
 
 #### 3.5.6. `related`
@@ -913,3 +918,5 @@ An error code.
 [Task-Based UI](https://cqrs.wordpress.com/documents/task-based-ui/)
 
 [Inductive UI](https://msdn.microsoft.com/en-us/library/ms997506.aspx)
+
+[Demo Server: http://hi.cognicraft.net](http://hi.cognicraft.net)
