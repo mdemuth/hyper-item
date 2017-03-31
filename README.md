@@ -4,7 +4,7 @@
 
 Hyper-item is a hypermedia type that trys to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and subitems) at runtime.
 
-If you have a *hyper-item*-client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net) and feel free to follow links and submit actions.
+If you have a *hyper-item*-client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net), follow links and submit actions.
 
 ![item](img/Expanded-Item.png)
 
