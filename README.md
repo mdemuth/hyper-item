@@ -2,9 +2,9 @@
 
 ## 1. Description
 
-Hyper-item is a hypermedia type that trys to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and subitems) at runtime.
+Hyper-item is a hypermedia type that tries to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and sub-items) at runtime.
 
-If you have a *hyper-item*-client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net), follow links and submit actions.
+If you have a *hyper-item*-client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net) and try to follow links and submit actions.
 
 ![item](img/Expanded-Item.png)
 
@@ -16,7 +16,7 @@ The image above shows a representation of a generic collection.
 
 ![action](img/Collection-Action.png)
 
-The image abovw shows a representation of a generic action component.
+The image above shows a representation of a generic action component.
 
 ![filter](img/Collection-Filter.png)
 
@@ -30,7 +30,7 @@ The image above shows a representation of a generic sort component.
 
 ### 2.1. A User Collection
 
-The following example shows a list of users configured within an exemplary auth service. The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users Name in ascending order. A new user may be added to this collection by means of submitting the `add-user` action.
+The following example shows a list of users configured within an exemplary *auth* service. The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users name in ascending order. A new user may be added to this collection by means of submitting the `add-user` action.
 
 ```json
 {
@@ -273,7 +273,7 @@ Content-Type: application/json
 
 #### 2.1.2. Filter
 
-Each filter component leads to an `&filter` query part in the URL. Each of those has a list of comma seperated values with at least three parts: *name*,*operator*,*value*. If the value is an array then each of these will in turn be seperated by a comma.
+Each filter component leads to an `&filter` query part in the URL. Each of those has a list of comma separated values with at least three parts: *name*,*operator*,*value*. If the value is an array then each of these will in turn be separated by a comma.
 
 ```
 GET /auth/users/?sort=name,ASC&filter=last-login,lt,2017-01-09T12:00:00Z HTTP/1.1
@@ -283,7 +283,7 @@ Host: www.example.com
 
 #### 2.1.3. Sort
 
-Each sort component leads to an `&sort` query part in the URL. Each of those has a list of comma seperated values with exactly two parts: *name*,*order*.
+Each sort component leads to an `&sort` query part in the URL. Each of those has a list of comma separated values with exactly two parts: *name*,*order*.
 
 ```
 GET /auth/users/?filter=last-login,lt,2017-01-09T12:00:00Z&sort=name,ASC HTTP/1.1
@@ -294,7 +294,7 @@ Host: www.example.com
 
 ### 2.2. A Users Details
 
-The following example shows a users details within our exemplary auth service. A user has a set of claims. Hidden parameters in actions are used to transfer enough information to the service to know wich action is being submitted. Clients always need to send any hidden parameters within the message Body.   
+The following example shows a users details within our exemplary auth service. A user has a set of claims. Hidden parameters in actions are used to transfer enough information to the service to know which action is being submitted. Clients always need to send any hidden parameters within the message Body.   
 
 ```json
 {
@@ -556,7 +556,7 @@ A document local identifier for the item that may be used as the target of URL f
 A list of [properties](#32-property) describing the current state of the item.
 
 #### 3.1.5. `links`
-A list of [links](#33-link) related to the item. A root item should include a link with `rel` to `self` with the cannonical `href` for this item.
+A list of [links](#33-link) related to the item. A root item should include a link with `rel` to `self` with the canonical `href` for this item.
 
 #### 3.1.6. `actions`
 A list of [actions](#34-action) related to the item.
@@ -617,11 +617,11 @@ Links the [item](#31-item) to another concept. The fields `href` and `template` 
 
 #### 3.3.1. `rel`
 The relation of the link to its item.
-- `self` The `href` should point to the cannonical URL for this item.
+- `self` The `href` should point to the canonical URL for this item.
 - `details` The `href` should point to more detailed information about the item.
 - `next` can be used by items representing a result set. It may be used to select the next page of items. 
 - `previous` can be used by items representing a result set. It may be used to select the previous page of items.
-- `filter` can be used by items respresenting a result set to reduce the number of items. 
+- `filter` can be used by items representing a result set to reduce the number of items. 
 - `sort` can be used by items representing a result set to reorder the items.
 - `profile` should be used to describe item `types`, `rels` and property `names`.
 - ...
@@ -677,7 +677,7 @@ The media type of the action payload.
 Parameters that will need to be sent.
 
 #### 3.4.6. `context`
-Marks a parameter as the actions context. If a parameters name would be *hair-color* and this action would represent *change-hair-color* then a generic representer could use *context:hair-color* to move the action closer to the representation of the property.
+Marks a [property](#32-property) as the actions context. If a properties name would be *hair-color* and this action would represent *change-hair-color* then a generic representer could use *context: hair-color* to move the action closer to the representation of the property.
 
 #### 3.4.7. `label`
 A localized label for the action.  
@@ -715,7 +715,7 @@ A list of [select-options](#36-select-option) or [select-groups](#37-select-grou
 The web-related [select-options](#36-select-option) or [select-groups](#37-select-group) for a select type parameter.
 
 #### 3.5.7. `components`
-A list of [filter-components](#38-filter-component) for a filter type parameter. A list of [sort-components](#310-sort-component) for a sort type parmeter. 
+A list of [filter-components](#38-filter-component) for a filter type parameter. A list of [sort-components](#310-sort-component) for a sort type parameter. 
 
 #### 3.5.8. `pattern`
 A pattern for a text type parameter.
@@ -737,7 +737,7 @@ The step size of number type parameters.
 The number of columns in a text-area type parameter.
 
 #### 3.5.15. `rows`
-The number of rows in a text-area type paramenter.
+The number of rows in a text-area type parameter.
 
 #### 3.5.16. `required`
 Specifies if the parameter is required.
@@ -904,8 +904,11 @@ An error code.
 - Since we are using `each()` in our representation logic new properties, links and actions may appear at runtime. 
 - The concepts used in this specification are build so that you may reduce context at each step during representation. For example if you need to display an action for renaming a user this action will have a name parameter with the value set to the current users name. This enables you to loose the reference to the user item entirely. Another example would be the users name property that holds every piece of information needed to represent a text property.
 
+## 5. Food for Thought
 
-## 5. Related Material
+[Application-Model](application-model.md)
+
+## 6. Related Material
 
 [collection+json](http://amundsen.com/media-types/collection/)
 
