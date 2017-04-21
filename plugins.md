@@ -15,7 +15,7 @@ A plugin in the context of the [hyper-item](README.md) media type would contribu
 
 ```json
 {
-    "locaction": "example.com/user",
+    "location": "example.com/user",
     "link": {
         "label": "Export",
         "rel": "alternate",
