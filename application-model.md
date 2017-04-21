@@ -2,7 +2,7 @@
 
 Let's try to think of the *UI* or an *Application* as just another domain model. The following Application-Model is based on the [e4](http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fe4%2Fui%2Fmodel%2Fapplication%2Fpackage-summary.html) and consists of a *Suite* of *Applications*. Each Application has many *Perspectives*. A Perspective may have multiple *Parts* which link to *Contents*. The following UML-class-diagram shows the basic structure.
 
-These concepts may be represented just as any domain model within the *hyper-item* media type. 
+These concepts may be represented just as any domain model within the [hyper-item](README.md) media type. 
 
 ![application-model](img/application-model.png)
 
@@ -18,4 +18,5 @@ Only a single Perspective may be shown at any given time. A default perspective 
 
 ## Related Material
 
-[e4](http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fe4%2Fui%2Fmodel%2Fapplication%2Fpackage-summary.html)
+- [hyper-item](README.md)
+- [e4](http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fe4%2Fui%2Fmodel%2Fapplication%2Fpackage-summary.html)

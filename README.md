@@ -906,20 +906,15 @@ An error code.
 
 ## 5. Food for Thought
 
-[Application-Model](application-model.md)
+- [Application-Model](application-model.md)
+- [Plugins](plugins.md)
 
 ## 6. Related Material
 
-[collection+json](http://amundsen.com/media-types/collection/)
-
-[siren](https://github.com/kevinswiber/siren)
-
-[RFC 3986 - URI](https://tools.ietf.org/html/rfc3986)
-
-[RFC 6570 - URI Template](https://tools.ietf.org/html/rfc6570)
-
-[Task-Based UI](https://cqrs.wordpress.com/documents/task-based-ui/)
-
-[Inductive UI](https://msdn.microsoft.com/en-us/library/ms997506.aspx)
-
-[Demo Server: http://hi.cognicraft.net](http://hi.cognicraft.net)
+- [collection+json](http://amundsen.com/media-types/collection/)
+- [siren](https://github.com/kevinswiber/siren)
+- [RFC 3986 - URI](https://tools.ietf.org/html/rfc3986)
+- [RFC 6570 - URI Template](https://tools.ietf.org/html/rfc6570)
+- [Task-Based UI](https://cqrs.wordpress.com/documents/task-based-ui/)
+- [Inductive UI](https://msdn.microsoft.com/en-us/library/ms997506.aspx)
+- [Demo Server: http://hi.cognicraft.net](http://hi.cognicraft.net)
