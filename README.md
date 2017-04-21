@@ -1,5 +1,15 @@
 # hyper-item: a hypermedia specification
 
+## Contents
+
+1. [Description](#1-description)
+2. [Examples](#2-examples)
+3. [Concepts](#3-concepts)
+4. [FAQ](#4-faq)
+5. [Food for Thought](#5-food-for-thought)
+6. [Related Material](#6-related-material)
+
+
 ## 1. Description
 
 Hyper-item is a hypermedia type that tries to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and sub-items) at runtime.
