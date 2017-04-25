@@ -380,7 +380,6 @@ The following example shows a users details within our exemplary auth service. A
                                     "value": "admin"
                                 }
                             ],
-                            "context": "name",
                             "ok": "Remove Claim",
                             "cancel": "Cancel"
                         }
@@ -413,7 +412,6 @@ The following example shows a users details within our exemplary auth service. A
                             "required": true
                         }
                     ],
-                    "context": "name",
                     "ok": "Add Claim",
                     "cancel": "Cancel"
                 }
