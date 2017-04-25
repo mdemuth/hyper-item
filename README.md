@@ -1,5 +1,7 @@
 # hyper-item: a hypermedia specification
 
+Your input is appreciated. Feel free to file a GitHub Issue, a Pull Request, or contact me on Twitter [@MarioDemuth](https://twitter.com/MarioDemuth). Thank you!
+
 ## Contents
 
 1. [Description](#1-description)
@@ -15,6 +17,8 @@
 Hyper-item is a hypermedia type that tries to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and sub-items) at runtime.
 
 If you have a *hyper-item*-client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net) and try to follow links and submit actions.
+
+The media type for JSON *hyper-item* is `application/vnd.hyper-item+json`.
 
 ![item](img/Expanded-Item.png)
 
