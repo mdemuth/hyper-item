@@ -46,19 +46,7 @@ The image above shows a representation of a generic sort component.
 
 The following example shows a list of users configured within an exemplary *auth* service. The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users name in ascending order. A new user may be added to this collection by means of submitting the `add-user` action.
 
-*** REQUEST ***
 ```
-GET /auth/users/ HTTP/1.1
-Host: www.example.com
-Accept: application/vnd.hyper-item+json
-```
-
-*** RESPONSE ***
-```
-200 OK HTTP/1.1
-Content-Type: application/vnd.hyper-item+json
-Content-Length: xxx
-
 {
     "label": "Users",
     "type" : "users",
