@@ -46,7 +46,19 @@ The image above shows a representation of a generic sort component.
 
 The following example shows a list of users configured within an exemplary *auth* service. The `self` link shows that his collection has been filtered to only include users that have had their last-login before noon on Jan 9 2017 and sorted by the users name in ascending order. A new user may be added to this collection by means of submitting the `add-user` action.
 
-```json
+*** REQUEST ***
+```
+GET /auth/users/ HTTP/1.1
+Host: www.example.com
+Accept: application/vnd.hyper-item+json
+```
+
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
 {
     "label": "Users",
     "type" : "users",
@@ -274,35 +286,66 @@ The following example shows a list of users configured within an exemplary *auth
 
 #### 2.1.1. Add User
 
+*** REQUEST ***
 ```
 POST /auth/users/ HTTP/1.1
 Host: www.example.com
+Accept: application/vnd.hyper-item+json
 Content-Type: application/json
-
 
 {
     "name": "New Users Name"
 }
 ```
 
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
+{ ... }
+```
+
+
 #### 2.1.2. Filter
 
 Each filter component leads to an `&filter` query part in the URL. Each of those has a list of comma separated values with at least three parts: *name*,*operator*,*value*. If the value is an array then each of these will in turn be separated by a comma.
 
+*** REQUEST ***
 ```
 GET /auth/users/?sort=name,ASC&filter=last-login,lt,2017-01-09T12:00:00Z HTTP/1.1
 Host: www.example.com
+Accept: application/vnd.hyper-item+json
+```
 
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
+{ ... }
 ```
 
 #### 2.1.3. Sort
 
 Each sort component leads to an `&sort` query part in the URL. Each of those has a list of comma separated values with exactly two parts: *name*,*order*.
 
+*** REQUEST ***
 ```
 GET /auth/users/?filter=last-login,lt,2017-01-09T12:00:00Z&sort=name,ASC HTTP/1.1
 Host: www.example.com
+Accept: application/vnd.hyper-item+json
+```
 
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
+{ ... }
 ```
 
 
@@ -310,7 +353,19 @@ Host: www.example.com
 
 The following example shows a users details within our exemplary auth service. A user has a set of claims. Hidden parameters in actions are used to transfer enough information to the service to know which action is being submitted. Clients always need to send any hidden parameters within the message Body.   
 
-```json
+*** REQUEST ***
+```
+GET /auth/users/0001 HTTP/1.1
+Host: www.example.com
+Accept: application/vnd.hyper-item+json
+```
+
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
 {
     "label": "Alice",
     "type": "user",
@@ -485,11 +540,12 @@ The following example shows a users details within our exemplary auth service. A
 
 #### 2.2.1. Rename
 
+*** REQUEST ***
 ```
 POST /auth/users/0001 HTTP/1.1
 Host: www.example.com
+Accept: application/vnd.hyper-item+json
 Content-Type: application/json
-
 
 {
     "@profile": "rename",
@@ -497,11 +553,22 @@ Content-Type: application/json
 }
 ```
 
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
+{ ... }
+```
+
 #### 2.2.2. Deactivate
 
+*** REQUEST ***
 ```
 POST /auth/users/0001 HTTP/1.1
 Host: www.example.com
+Accept: application/vnd.hyper-item+json
 Content-Type: application/json
 
 
@@ -510,21 +577,41 @@ Content-Type: application/json
 }
 ```
 
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
+{ ... }
+```
+
 #### 2.2.3. Delete
 
+*** REQUEST ***
 ```
 DELETE /auth/users/0001 HTTP/1.1
 Host: www.example.com
+Accept: application/vnd.hyper-item+json
+```
 
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
+{ ... }
 ```
 
 #### 2.2.4. Add Claim
 
+*** REQUEST ***
 ```
 POST /auth/users/0001 HTTP/1.1
 Host: www.example.com
+Accept: application/vnd.hyper-item+json
 Content-Type: application/json
-
 
 {
     "@profile": "add-claim",
@@ -533,11 +620,22 @@ Content-Type: application/json
 }
 ```
 
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
+{ ... }
+```
+
 #### 2.2.5. Remove Claim
 
+*** REQUEST ***
 ```
 POST /auth/users/0001 HTTP/1.1
 Host: www.example.com
+Accept: application/vnd.hyper-item+json
 Content-Type: application/json
 
 
@@ -546,6 +644,15 @@ Content-Type: application/json
     "type": "role",
     "value": "admin"
 }
+```
+
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/vnd.hyper-item+json
+Content-Length: xxx
+
+{ ... }
 ```
 
 ## 3. Concepts
