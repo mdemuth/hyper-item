@@ -5,10 +5,10 @@ Suppose your backend/server is a system of [Self-contained Systems (SCS)](http:/
 A plugin in the context of the [hyper-item](README.md) media type would contribute *Items*, *Links* or *Actions* to other *Items*. 
 
 - Suppose an API would allow access to a *user* domain type. 
-- A user may be open to extension by defining a well known Location-[URI (RFC 3986)](https://tools.ietf.org/html/rfc3986): example.com/user. (A *profile*-URL-Value might also be a good candidate.)
+- A user may be open to extension by defining a well known Location-[URI](https://tools.ietf.org/html/rfc3986): example.com/user. (A *profile*-URL-Value might also be a good candidate.)
 - While exposing a hyper-item representation the API would *ask* the *Plugin-registry* to contribute *Sub-Items*, *Links* and *Actions* to the representation. 
 - Selection of appropriate concepts would be based on the predefined Location-URI.
-- To give the contributed concept the opportunity to be as specific as possible for a given domain type, the representations URL will - if possible - be *injected* into *Actions* and *Links* as a parameter. The *value* of the [parameter](README.md#35-parameter) with the *name* *url* will be set to the representations URL. This is only possible for a contributed *Link* if it uses the *template* form or a contributed *Action* that specify a *url* parameter.
+- To give the contributed concept the opportunity to be as specific as possible for a given domain type instance, the representations URL will - if possible - be *injected* into *Actions* and *Links* as a parameter. The *value* of the [parameter](README.md#35-parameter) with the *name* *url* will be set to the representations URL. This is only possible for a contributed *Link* if it uses the *template* form or a contributed *Action* that specify a *url* parameter.
 - Now suppose you would need to add a customer specific *PDF-Export* for users.
 - Without a plugin architecture the *PDF-Export* would need to be integrated into the *auth* service that owns the *users*.
 - With a plugin architecture a customer specific *PDF-Export-Self-Contained-System* could contribute a *Export*-Link to the *example.com/user* Location-URI:
