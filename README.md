@@ -18,7 +18,7 @@ Hyper-item is a hypermedia type that tries to combine the best parts of the [col
 
 If you have a *hyper-item*-client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net) and try to follow links and submit actions.
 
-The media type for JSON *hyper-item* is `application/vnd.hyper-item+json`.
+The media type for JSON *hyper-item* is [`application/vnd.hyper-item+json`](https://www.iana.org/assignments/media-types/application/vnd.hyper-item+json).
 
 ![item](img/Expanded-Item.png)
 
