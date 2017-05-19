@@ -254,7 +254,7 @@ The following example shows a list of users configured within an exemplary *auth
             "label": "Add User",
             "rel": "add-user",
             "href": "/auth/users/",
-            "type": "application/json",
+            "encoding": "application/json",
             "method": "POST",
             "parameters": [
                 {
@@ -408,7 +408,7 @@ Content-Length: xxx
                             "label": "Remove Claim",
                             "rel": "remove-claim",
                             "href": "/auth/users/0001",
-                            "type": "application/json",
+                            "encoding": "application/json",
                             "method": "POST",
                             "parameters": [
                                 {
@@ -438,7 +438,7 @@ Content-Length: xxx
                     "label": "Add Claim",
                     "rel": "add-claim",
                     "href": "/auth/users/0001",
-                    "type": "application/json",
+                    "encoding": "application/json",
                     "method": "POST",
                     "parameters": [
                         {
@@ -477,7 +477,7 @@ Content-Length: xxx
             "label": "Rename",
             "rel": "rename",
             "href": "/auth/users/0001",
-            "type": "application/json",
+            "encoding": "application/json",
             "method": "POST",
             "parameters": [
                 {
@@ -501,7 +501,7 @@ Content-Length: xxx
             "label": "Deactivate",
             "rel": "deactivate",
             "href": "/auth/users/0001",
-            "type": "application/json",
+            "encoding": "application/json",
             "method": "POST",
             "parameters": [
                 {
@@ -737,23 +737,33 @@ The relation of the link to its item.
 The URL of the target. Links should be resolved via the HTTP method `GET`.
 
 #### 3.3.3. `template`
-A URI template as defined by [RFC 6570 - URI Template](https://tools.ietf.org/html/rfc6570).
+A URI template as defined by [RFC 6570](https://tools.ietf.org/html/rfc6570).
 
 #### 3.3.4. `parameters`
 Parameters that are used within the URI template.
 
 #### 3.3.5. `type`
-The media type of the target.
+The value of the `type` property specifies the media type of the linked document/resource.
 
-#### 3.3.6. `render`
+#### 3.3.6. `language`
+The value of the `language` property specifies the base language of the linked document/resource.
+
+#### 3.3.7. `accept`
+The value of the `accept` property may be used by the hyper-item-client to aid in content negotiation. If a value is specified it should be used as the `Accept` header. If the property is missing `application/vnd.hyper-item+json` should be used.
+
+#### 3.3.8. `accept-language`
+The value of the `accept-language` property may be used by the hyper-item-client to aid in content negotiation. If a value is specified it should be used as the `Accept-Language` header. If the property is missing the current language settings should be used.
+
+#### 3.3.9. `render`
 A rendering hint.
 - `link` in case the default rendering should be used (may be omitted)
 - `none` in case the link should not be rendered (candidate: `rel: profile`).
+- `transclude` in case the content returned from the URL should be embedded into the current [item](#31-item).
 
-#### 3.3.7. `label`
+#### 3.3.10. `label`
 A localized label for the link. 
 
-#### 3.3.8. `description`
+#### 3.3.11. `description`
 A localized description of the link. 
 
 
@@ -772,12 +782,13 @@ The HTTP Method to use.
 - `PATCH`
 - `PUT`
 - `DELETE`
+- ...
 
-
-#### 3.4.4. `type`
-The media type of the action payload.
+#### 3.4.4. `encoding`
+The media type of the action payload. The value should be used as the `Content-Type` header.
 - `application/x-www-form-urlencoded`
 - `application/json`
+- `multipart/form-data`
 - ...
 
 #### 3.4.5. `parameters`
