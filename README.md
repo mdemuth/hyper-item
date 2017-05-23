@@ -1,4 +1,4 @@
-# hyper-item: a hypermedia specification
+# Hyper-Item: a hypermedia specification
 
 Your input is appreciated. Feel free to file a GitHub Issue, a Pull Request, or contact me on Twitter [@MarioDemuth](https://twitter.com/MarioDemuth). Thank you!
 
@@ -15,11 +15,11 @@ Your input is appreciated. Feel free to file a GitHub Issue, a Pull Request, or 
 
 ## 1. Description
 
-Hyper-item is a hypermedia type that tries to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and sub-items) at runtime.
+Hyper-Item is a hypermedia type that tries to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and sub-items) at runtime.
 
-If you have a *hyper-item*-client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net) and try to follow links and submit actions.
+If you have a Hyper-Item client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net) and try to follow links and submit actions.
 
-The media type for JSON *hyper-item* is [`application/vnd.hyper-item+json`](https://www.iana.org/assignments/media-types/application/vnd.hyper-item+json).
+The media type for Hyper-Item in JSON is [`application/vnd.hyper-item+json`](https://www.iana.org/assignments/media-types/application/vnd.hyper-item+json).
 
 ![item](img/Expanded-Item.png)
 
@@ -664,7 +664,7 @@ Describes the type of the item. Possible values are subject to the domain repres
 A list of [properties](#32-property) describing the current state of the item.
 
 #### 3.1.5. `data`
-An arbitrary *JSONValue* that may be used as *payload* that does not naturally fit into properties. This property should only be used sparsely and should be ignored by most generic hyper-item-clients. 
+An arbitrary *JSONValue* that may be used as *payload* that does not naturally fit into properties. This property should only be used sparsely and should be ignored by most generic Hyper-Item clients. 
 
 #### 3.1.6. `links`
 A list of [links](#33-link) related to the item. A root item should include a link with `rel` to `self` with the canonical `href` for this item.
@@ -753,10 +753,10 @@ The value of the `type` property specifies the media type of the linked document
 The value of the `language` property specifies the base language of the linked document/resource.
 
 #### 3.3.7. `accept`
-The value of the `accept` property may be used by the hyper-item-client to aid in content negotiation. If a value is specified it should be used as the `Accept` header. If the property is missing `application/vnd.hyper-item+json` should be used.
+The value of the `accept` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it should be used as the `Accept` header. If the property is missing `application/vnd.hyper-item+json` should be used.
 
 #### 3.3.8. `accept-language`
-The value of the `accept-language` property may be used by the hyper-item-client to aid in content negotiation. If a value is specified it should be used as the `Accept-Language` header. If the property is missing the current language settings should be used.
+The value of the `accept-language` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it should be used as the `Accept-Language` header. If the property is missing the current language settings should be used.
 
 #### 3.3.9. `render`
 A rendering hint.
