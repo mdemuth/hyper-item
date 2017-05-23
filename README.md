@@ -650,37 +650,40 @@ Content-Length: xxx
 ### 3.1. Item
 An item represents the state of a domain concept.
 
-#### 3.1.1. `type`        
-Describes the type of the item. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
-
-#### 3.1.2. `rel`         
+#### 3.1.1. `rel`         
 Describes the relation of the item to its parent. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
 
-#### 3.1.3. `id`          
+#### 3.1.2. `id`          
 A document local identifier for the item that may be used as the target of URL fragments.
+
+#### 3.1.3. `type`        
+Describes the type of the item. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
 
 #### 3.1.4. `properties`  
 A list of [properties](#32-property) describing the current state of the item.
 
-#### 3.1.5. `links`
+#### 3.1.5. `data`
+An arbitrary *JSONValue* that may be used as *payload* that does not naturally fit into properties. This property should only be used sparsely and should be ignored by most generic hyper-item-clients. 
+
+#### 3.1.6. `links`
 A list of [links](#33-link) related to the item. A root item should include a link with `rel` to `self` with the canonical `href` for this item.
 
-#### 3.1.6. `actions`
+#### 3.1.7. `actions`
 A list of [actions](#34-action) related to the item.
 
-#### 3.1.7. `items`
+#### 3.1.8. `items`
 A list of (sub-)items related to the item.
 
-#### 3.1.8. `render`
+#### 3.1.9. `render`
 A rendering hint. 
 - `item` in case the default rendering should be used (may be omitted)
 - `none` in case the item should not be rendered. Can be used to provide local URL fragment targets that do not naturally fit into the standard tree hierarchy.
 - `transclude` in case the item should be replaced with an item targeted by a link  with `rel` to `details`. (i.e. server-side includes, edge-side includes, resource contributions).
 
-#### 3.1.9. `label`       
+#### 3.1.10. `label`       
 A localized label for the item. 
 
-#### 3.1.10. `description` 
+#### 3.1.11. `description` 
 A localized description of the item.
 
 
@@ -692,7 +695,7 @@ A property represents a part of the state of an [item](#31-item).
 The name of the property. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`.
 
 #### 3.2.2. `value`
-The value of the property. 
+The *JSONValue* of the property. 
 
 #### 3.2.3. `type`
 The type of the property.
