@@ -7,9 +7,10 @@ Your input is appreciated. Feel free to file a GitHub Issue, a Pull Request, or 
 1. [Description](#1-description)
 2. [Examples](#2-examples)
 3. [Concepts](#3-concepts)
-4. [FAQ](#4-faq)
-5. [Food for Thought](#5-food-for-thought)
-6. [Related Material](#6-related-material)
+4. [Extensibility](#4-extensibility)
+5. [FAQ](#5-faq)
+6. [Food for Thought](#6-food-for-thought)
+7. [Related Material](#7-related-material)
 
 
 ## 1. Description
@@ -1013,9 +1014,15 @@ A localized message of the error.
 #### 3.12.4. `code`
 An error code.
 
+## 4. Extensibility
 
+This document describes the Hyper-Item vocabulary. Markup from other vocabularies ("foreign markup") can be used in a Hyper-Item document. Any extensions to the Hyper-Item vocabulary MUST not redefine any objects (or their properties), arrays, properties, link relations, or data types defined in this document. Clients that do not recognize extensions to the Hyper-Item vocabulary SHOULD ignore them.
 
-## 4. FAQ
+The details of designing and implementing Hyper-Item extensions is beyond the scope of this document.
+
+**NOTE**: It is possible that future forward-compatible modifications to this specification will include new objects, arrays, properties, link-relations, and data types. Extension designers should take care to prevent future modifications from breaking or redefining those extensions.
+
+## 5. FAQ
 
 ### Why use arrays instead of hashes/objects?
 
@@ -1025,12 +1032,12 @@ An error code.
 - Since we are using `each()` in our representation logic new properties, links and actions may appear at runtime. 
 - The concepts used in this specification are build so that you may reduce context at each step during representation. For example if you need to display an action for renaming a user this action will have a name parameter with the value set to the current users name. This enables you to loose the reference to the user item entirely. Another example would be the users name property that holds every piece of information needed to represent a text property.
 
-## 5. Food for Thought
+## 6. Food for Thought
 
 - [Application-Model](application-model.md)
 - [Plugins](plugins.md)
 
-## 6. Related Material
+## 7. Related Material
 
 - [collection+json](http://amundsen.com/media-types/collection/)
 - [siren](https://github.com/kevinswiber/siren)
