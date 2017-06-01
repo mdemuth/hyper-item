@@ -776,22 +776,22 @@ Content-Length: xxx
 An item represents the state of a domain concept.
 
 #### 3.1.1. `rel`         
-Describes the relation of the item to its parent. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
+Describes the relation of the item to its parent. Possible values are subject to the domain represented by the item and SHOULD be documented and linked to this item via `rel` of `profile`. 
 
 #### 3.1.2. `id`          
 A document local identifier for the item that may be used as the target of URL fragments.
 
 #### 3.1.3. `type`        
-Describes the type of the item. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
+Describes the type of the item. Possible values are subject to the domain represented by the item and SHOULD be documented and linked to this item via `rel` of `profile`. 
 
 #### 3.1.4. `properties`  
 A list of [properties](#32-property) describing the current state of the item.
 
 #### 3.1.5. `data`
-An arbitrary *JSONValue* that may be used as *payload* that does not naturally fit into properties. This property should only be used sparsely and should be ignored by most generic Hyper-Item clients. 
+An arbitrary *JSONValue* that MAY be used as *payload* that does not naturally fit into properties. This property SHOULD only be used sparsely and SHOULD be ignored by most generic Hyper-Item clients. 
 
 #### 3.1.6. `links`
-A list of [links](#33-link) related to the item. A root item should include a link with `rel` to `self` with the canonical `href` for this item.
+A list of [links](#33-link) related to the item. A root item SHOULD include a link with `rel` to `self` with the canonical `href` for this item.
 
 #### 3.1.7. `actions`
 A list of [actions](#34-action) related to the item.
@@ -801,9 +801,9 @@ A list of (sub-)items related to the item.
 
 #### 3.1.9. `render`
 A rendering hint. 
-- `item` in case the default rendering should be used (may be omitted)
-- `none` in case the item should not be rendered. Can be used to provide local URL fragment targets that do not naturally fit into the standard tree hierarchy.
-- `transclude` in case the item should be replaced with an item targeted by a link  with `rel` to `details`. (i.e. server-side includes, edge-side includes, resource contributions).
+- `item` in case the default rendering SHOULD be used (MAY be omitted)
+- `none` in case the item SHOULD not be rendered. Can be used to provide local URL fragment targets that do not naturally fit into the standard tree hierarchy.
+- `transclude` in case the item SHOULD be replaced with an item targeted by a link  with `rel` to `details`. (i.e. server-side includes, edge-side includes, resource contributions).
 
 #### 3.1.10. `label`       
 A localized label for the item. 
@@ -817,7 +817,7 @@ A localized description of the item.
 A property represents a part of the state of an [item](#31-item). 
 
 #### 3.2.1. `name`
-The name of the property. Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`.
+The name of the property. Possible values are subject to the domain represented by the item and SHOULD be documented and linked to this item via `rel` of `profile`.
 
 #### 3.2.2. `value`
 The *JSONValue* of the property. 
@@ -848,21 +848,21 @@ A localized string representation of the value.
 
 ### 3.3. Link
 
-Links the [item](#31-item) to another concept. The fields `href` and `template` with `parameters` are mutually exclusive. Links should be resolved via the HTTP method GET.
+Links the [item](#31-item) to another concept. The fields `href` and `template` with `parameters` are mutually exclusive. Links MUST be resolved via the HTTP method GET.
 
 #### 3.3.1. `rel`
 The relation of the link to its item.
-- `self` The `href` should point to the canonical URL for this item.
-- `details` The `href` should point to more detailed information about the item.
-- `next` can be used by items representing a result set. It may be used to select the next page of items. 
-- `previous` can be used by items representing a result set. It may be used to select the previous page of items.
-- `filter` can be used by items representing a result set to reduce the number of items. 
-- `sort` can be used by items representing a result set to reorder the items.
-- `profile` should be used to describe item `types`, `rels` and property `names`.
+- `self` The `href` SHOULD point to the canonical URL for this item.
+- `details` The `href` SHOULD point to more detailed information about the item.
+- `next` can be used by items representing a result set. It SHOULD be used to select the next page of items. 
+- `previous` can be used by items representing a result set. It SHOULD be used to select the previous page of items.
+- `filter` SHOULD be used by items representing a result set to reduce the number of items. 
+- `sort` SHOULD be used by items representing a result set to reorder the items.
+- `profile` SHOULD be used to describe item `types`, `rels` and property `names`.
 - ...
 
 #### 3.3.2. `href`
-The URL of the target. Links should be resolved via the HTTP method `GET`.
+The URL of the target. Links MUST be resolved via the HTTP method `GET`.
 
 #### 3.3.3. `template`
 A URI template as defined by [RFC 6570](https://tools.ietf.org/html/rfc6570).
@@ -877,16 +877,16 @@ The value of the `type` property specifies the media type of the linked document
 The value of the `language` property specifies the base language of the linked document/resource.
 
 #### 3.3.7. `accept`
-The value of the `accept` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it should be used as the `Accept` header. If the property is missing `application/vnd.hyper-item+json` should be used.
+The value of the `accept` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it SHOULD be used as the `Accept` header. If the property is missing `application/vnd.hyper-item+json` SHOULD be used.
 
 #### 3.3.8. `accept-language`
-The value of the `accept-language` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it should be used as the `Accept-Language` header. If the property is missing the current language settings should be used.
+The value of the `accept-language` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it SHOULD be used as the `Accept-Language` header. If the property is missing the current language settings SHOULD be used.
 
 #### 3.3.9. `render`
 A rendering hint.
-- `link` in case the default rendering should be used (may be omitted)
-- `none` in case the link should not be rendered (candidate: `rel: profile`).
-- `transclude` in case the content returned from the URL should be embedded into the current [item](#31-item).
+- `link` in case the default rendering SHOULD be used (MAY be omitted)
+- `none` in case the link SHOULD not be rendered (candidate: `rel: profile`).
+- `transclude` in case the content returned from the URL SHOULD be embedded into the current [item](#31-item).
 
 #### 3.3.10. `label`
 A localized label for the link. 
@@ -899,7 +899,7 @@ A localized description of the link.
 ### 3.4. Action
 
 #### 3.4.1. `rel`
-The relation of the action to the [item](#31-item). Possible values are subject to the domain represented by the item and should be documented and linked to this item via `rel` of `profile`. 
+The relation of the action to the [item](#31-item). Possible values are subject to the domain represented by the item and SHOULD be documented and linked to this item via `rel` of `profile`. 
 
 #### 3.4.2. `href`
 The URL of the target.
@@ -913,7 +913,7 @@ The HTTP Method to use.
 - ...
 
 #### 3.4.4. `encoding`
-The media type of the action payload. The value should be used as the `Content-Type` header.
+The media type of the action payload. The value SHOULD be used as the `Content-Type` header.
 - `application/x-www-form-urlencoded`
 - `application/json`
 - `multipart/form-data`
@@ -959,11 +959,11 @@ A list of [select-options](#36-select-option) or [select-groups](#37-select-grou
 
 #### 3.5.6. `related`
 The web-related [select-options](#36-select-option) or [select-groups](#37-select-group) for a select type parameter.
-The property should be a URI template as defined by [RFC 6570](https://tools.ietf.org/html/rfc6570).
-Parameters needed within this template should be defined in the dependencies list.
+The property MUST be a URI template as defined by [RFC 6570](https://tools.ietf.org/html/rfc6570).
+Parameters needed within this template MUST be defined in the dependencies list.
 
 #### 3.5.7. `dependencies`
-A list of parameters that need to be set before this parameter can be set. The values of the parameters should be used during the template expansion for the web-related URI.
+A list of parameters that need to be set before this parameter can be set. The values of the parameters that MUST be used during the template expansion for the web-related URI.
 
 #### 3.5.8. `components`
 A list of [filter-components](#38-filter-component) for a filter type parameter. A list of [sort-components](#310-sort-component) for a sort type parameter. 
@@ -1069,7 +1069,7 @@ A localized description of the filter component.
 ### 3.9. Filter Operator
 
 #### 3.9.1. `operator`
-The operator that should be used.
+The operator that SHOULD be used.
 - `eq` equal
 - `neq` not equal
 - `lt` less than
@@ -1123,7 +1123,7 @@ A localized label for the sort order.
 A localized description of the sort order.
 
 #### 3.11.3. `order`
-The order that should be used.  
+The order that SHOULD be used.  
 - `ASC` ascending
 - `DESC` descending
 
@@ -1149,7 +1149,7 @@ This document describes the Hyper-Item vocabulary. Markup from other vocabularie
 
 The details of designing and implementing Hyper-Item extensions is beyond the scope of this document.
 
-**NOTE**: It is possible that future forward-compatible modifications to this specification will include new objects, arrays, properties, link-relations, and data types. Extension designers should take care to prevent future modifications from breaking or redefining those extensions.
+> **NOTE**: It is possible that future forward-compatible modifications to this specification will include new objects, arrays, properties, link-relations, and data types. Extension designers SHOULD take care to prevent future modifications from breaking or redefining those extensions.
 
 ## 5. FAQ
 
