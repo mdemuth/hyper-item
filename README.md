@@ -644,6 +644,127 @@ Content-Length: xxx
 { ... }
 ```
 
+### 2.3 Web-Related Select Options
+
+```json
+{
+    ...
+    "parameters": [
+         {
+             "label": "Country",
+             "name": "country",
+             "type": "select",
+             "related": "http://www.example.com/countries/"
+         }
+    ],
+    ... 
+}
+```
+
+*** REQUEST ***
+```
+GET /countries/ HTTP/1.1
+Host: www.example.com
+Accept: application/json
+```
+
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/json
+Content-Length: xxx
+
+[
+    {
+        "label": "Bahamas",
+        "value": "BS"
+    },
+    {
+        "label": "Germany",
+        "value": "DE"
+    },
+    {
+        "label": "United States of America",
+        "value": "US"
+    }
+]
+```
+
+
+### 2.4  Web-Related Dependent Select Options
+
+```json
+{
+     ...
+    "parameters": [
+         {
+             "label": "Country",
+             "name": "country",
+             "type": "select",
+             "related": "http://www.example.com/countries/"
+         },
+         {
+            "label": "States",
+            "name": "state",
+            "type": "select",
+            "related": "http://www.example.com/countries/{country}/states/",
+            "dependencies": [
+                "country"
+            ] 
+         },
+         {
+            "label": "City",
+            "name": "city",
+            "type": "select",
+            "related": "http://www.example.com/countries/{country}/states/{state}/cities",
+            "dependencies": [
+                "country",
+                "state"
+            ] 
+         }
+    ],
+    ... 
+}
+```
+
+*** REQUEST ***
+```
+GET /countries/DE/states/ HTTP/1.1
+Host: www.example.com
+Accept: application/json
+```
+
+*** RESPONSE ***
+```
+200 OK HTTP/1.1
+Content-Type: application/json
+Content-Length: xxx
+
+[
+    {
+        "label": "Baden-Württemberg",
+        "value": "DE-BW"
+    },
+    {
+        "label": "Bavaria",
+        "value": "DE-BY"
+    },
+    {
+        "label": "Berlin",
+        "value": "DE-BE"
+    },
+    {
+        "label": "Brandenburg",
+        "value": "DE-BB"
+    },
+    {
+        "label": "Bremen",
+        "value": "DE-HB"
+    },
+    ...
+]
+```
+
 ## 3. Concepts
 
 ![Overview](img/hyper-item.png)
@@ -835,45 +956,50 @@ A list of [select-options](#36-select-option) or [select-groups](#37-select-grou
 
 #### 3.5.6. `related`
 The web-related [select-options](#36-select-option) or [select-groups](#37-select-group) for a select type parameter.
+The property should be a URI template as defined by [RFC 6570](https://tools.ietf.org/html/rfc6570).
+Parameters needed within this template should be defined in the dependencies list.
 
-#### 3.5.7. `components`
+#### 3.5.7. `dependencies`
+A list of parameters that need to be set before this parameter can be set. The values of the parameters should be used during the template expansion for the web-related URI.
+
+#### 3.5.8. `components`
 A list of [filter-components](#38-filter-component) for a filter type parameter. A list of [sort-components](#310-sort-component) for a sort type parameter. 
 
-#### 3.5.8. `pattern`
+#### 3.5.9. `pattern`
 A pattern for a text type parameter.
 
-#### 3.5.9. `min`
+#### 3.5.10. `min`
 A min value for a number or date type parameter.
 
-#### 3.5.10. `max`
+#### 3.5.11. `max`
 A max value for a number or date type parameter.
 
-#### 3.5.11. `max-length`
+#### 3.5.12. `max-length`
 
-#### 3.5.12. `size`
+#### 3.5.13. `size`
 
-#### 3.5.13. `step`
+#### 3.5.14. `step`
 The step size of number type parameters.
 
-#### 3.5.14. `cols`
+#### 3.5.15. `cols`
 The number of columns in a text-area type parameter.
 
-#### 3.5.15. `rows`
+#### 3.5.16. `rows`
 The number of rows in a text-area type parameter.
 
-#### 3.5.16. `required`
+#### 3.5.17. `required`
 Specifies if the parameter is required.
 
-#### 3.5.17. `read-only`
+#### 3.5.18. `read-only`
 Specifies if the parameter is read only.
 
-#### 3.5.18. `multiple`
+#### 3.5.19. `multiple`
 Specifies if the parameter may be set multiple times.
 
-#### 3.5.19. `label`
+#### 3.5.20. `label`
 A localized label for the link.
 
-#### 3.5.20. `description`
+#### 3.5.21. `description`
 A localized description of the link.
 
 
