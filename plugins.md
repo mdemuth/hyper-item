@@ -85,7 +85,7 @@ Host: www.example.com
 
 ## Related Material
 
-- [hyper-item](README.md)
+- [Hyper-Item](README.md)
 - [Self-contained System (SCS)](http://scs-architecture.org/)
 - [Eclipse: Menu Contributions](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Fguide%2Fworkbench_cmd_menus.htm)
-- [URI (RFC 3986)](https://tools.ietf.org/html/rfc3986)
+- [RFC 3986](https://tools.ietf.org/html/rfc3986): Uniform Resource Identifier (URI)

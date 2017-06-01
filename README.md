@@ -13,11 +13,14 @@ Your input is appreciated. Feel free to file a GitHub Issue, a Pull Request, or 
 7. [Related Material](#7-related-material)
 
 
+> **NOTE**: 
+> The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
+
 ## 1. Description
 
-Hyper-Item is a hypermedia type that tries to combine the best parts of the [collection+json](http://amundsen.com/media-types/collection/) and [siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and sub-items) at runtime.
+Hyper-Item is a hypermedia type that tries to combine the best parts of the [Collection+JSON](http://amundsen.com/media-types/collection/) and [Siren](https://github.com/kevinswiber/siren) media types to enable the creation of [task-based](https://cqrs.wordpress.com/documents/task-based-ui/)/[inductive](https://msdn.microsoft.com/en-us/library/ms997506.aspx) user interfaces that have the ability to be extended by new features (properties, links, actions and sub-items) at runtime.
 
-If you have a Hyper-Item client feel free to say *hi* my demo server at [http://hi.cognicraft.net](http://hi.cognicraft.net) and try to follow links and submit actions.
+If you have a Hyper-Item client feel free to say *hi* my demo API at [http://hi.cognicraft.net](http://hi.cognicraft.net) and try to follow links and submit actions.
 
 The media type for Hyper-Item in JSON is [`application/vnd.hyper-item+json`](https://www.iana.org/assignments/media-types/application/vnd.hyper-item+json).
 
@@ -716,7 +719,7 @@ Content-Length: xxx
             "label": "City",
             "name": "city",
             "type": "select",
-            "related": "http://www.example.com/countries/{country}/states/{state}/cities",
+            "related": "http://www.example.com/countries/{country}/states/{state}/cities/",
             "dependencies": [
                 "country",
                 "state"
@@ -1165,10 +1168,11 @@ The details of designing and implementing Hyper-Item extensions is beyond the sc
 
 ## 7. Related Material
 
-- [collection+json](http://amundsen.com/media-types/collection/)
-- [siren](https://github.com/kevinswiber/siren)
-- [RFC 3986 - URI](https://tools.ietf.org/html/rfc3986)
-- [RFC 6570 - URI Template](https://tools.ietf.org/html/rfc6570)
-- [Task-Based UI](https://cqrs.wordpress.com/documents/task-based-ui/)
-- [Inductive UI](https://msdn.microsoft.com/en-us/library/ms997506.aspx)
-- [Demo Server: http://hi.cognicraft.net](http://hi.cognicraft.net)
+- [Collection+JSON](http://amundsen.com/media-types/collection/): Collection+JSON - Hypermedia Type
+- [Siren](https://github.com/kevinswiber/siren): Siren: a hypermedia specification for representing entities
+- [Task-Based UI](https://cqrs.wordpress.com/documents/task-based-ui/): CQRS: Task-Based UI
+- [Inductive UI](https://msdn.microsoft.com/en-us/library/ms997506.aspx): Microsoft Inductive User Interface Guidelines
+- [RFC 3986](https://tools.ietf.org/html/rfc3986): Uniform Resource Identifier (URI)
+- [RFC 6570](https://tools.ietf.org/html/rfc6570): URI Template
+- [RFC 2119](https://tools.ietf.org/html/rfc2119): Key words for use in RFCs to Indicate Requirement Levels
+- [http://hi.cognicraft.net](http://hi.cognicraft.net): Hyper-Item: Demo API
