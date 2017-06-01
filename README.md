@@ -691,7 +691,7 @@ Content-Length: xxx
 ```
 
 
-### 2.4  Web-Related Dependent Select Options
+### 2.4 Web-Related Dependent Select Options
 
 ```json
 {
