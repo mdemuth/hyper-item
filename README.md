@@ -704,7 +704,7 @@ Content-Length: xxx
              "related": "http://www.example.com/countries/"
          },
          {
-            "label": "States",
+            "label": "State",
             "name": "state",
             "type": "select",
             "related": "http://www.example.com/countries/{country}/states/",
