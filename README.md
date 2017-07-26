@@ -801,7 +801,6 @@ A list of (sub-)items related to the item.
 
 #### 3.1.9. `render`
 A rendering hint. 
-- `item` in case the default rendering SHOULD be used (MAY be omitted)
 - `none` in case the item SHOULD not be rendered. Can be used to provide local URL fragment targets that do not naturally fit into the standard tree hierarchy.
 - `transclude` in case the item SHOULD be replaced with an item targeted by a link  with `rel` to `details`. (i.e. server-side includes, edge-side includes, resource contributions).
 
@@ -843,7 +842,9 @@ A localized description of the property.
 #### 3.2.6. `display`
 A localized string representation of the value.
 
-
+#### 3.2.7. `render`
+A rendering hint.
+- `none` in case the property SHOULD not be rendered.
 
 
 ### 3.3. Link
@@ -884,7 +885,6 @@ The value of the `accept-language` property may be used by the Hyper-Item client
 
 #### 3.3.9. `render`
 A rendering hint.
-- `link` in case the default rendering SHOULD be used (MAY be omitted)
 - `none` in case the link SHOULD not be rendered (candidate: `rel: profile`).
 - `transclude` in case the content returned from the URL SHOULD be embedded into the current [item](#31-item).
 
