@@ -417,7 +417,7 @@ Content-Length: xxx
                             "parameters": [
                                 {
                                     "type": "hidden",
-                                    "name": "@profile",
+                                    "name": "@action",
                                     "value": "remove-claim"
                                 },
                                 {
@@ -447,7 +447,7 @@ Content-Length: xxx
                     "parameters": [
                         {
                             "type": "hidden",
-                            "name": "@profile",
+                            "name": "@action",
                             "value": "add-claim"
                         },
                         {
@@ -486,7 +486,7 @@ Content-Length: xxx
             "parameters": [
                 {
                     "type": "hidden",
-                    "name": "@profile",
+                    "name": "@action",
                     "value": "rename"
                 },
                 {
@@ -510,7 +510,7 @@ Content-Length: xxx
             "parameters": [
                 {
                     "type": "hidden",
-                    "name": "@profile",
+                    "name": "@action",
                     "value": "deactivate"
                 }
             ],
@@ -540,7 +540,7 @@ Accept: application/vnd.hyper-item+json
 Content-Type: application/json
 
 {
-    "@profile": "rename",
+    "@action": "rename",
     "name": "Alice (new)"
 }
 ```
@@ -565,7 +565,7 @@ Content-Type: application/json
 
 
 {
-    "@profile": "deactivate"
+    "@action": "deactivate"
 }
 ```
 
@@ -606,7 +606,7 @@ Accept: application/vnd.hyper-item+json
 Content-Type: application/json
 
 {
-    "@profile": "add-claim",
+    "@action": "add-claim",
     "type": "role",
     "value": "simple-user"
 }
@@ -632,7 +632,7 @@ Content-Type: application/json
 
 
 {
-    "@profile": "remove-claim",
+    "@action": "remove-claim",
     "type": "role",
     "value": "admin"
 }
@@ -937,7 +937,9 @@ A localized ok/submit label for the action.
 #### 3.4.10. `cancel`
 A localized cancel label for the action.
 
-
+#### 3.4.11. `render`
+A rendering hint. 
+- `none` in case the action SHOULD not be rendered.
 
 
 ### 3.5. Parameter
