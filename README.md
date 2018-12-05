@@ -885,7 +885,7 @@ The value of the `accept-language` property may be used by the Hyper-Item client
 
 #### 3.3.9. `accept-profile`
 A localized label for the link. 
-The value of the `accept-language` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it SHOULD be used as the `Accept-Profile` header.
+The value of the `accept-profile` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it SHOULD be used as the `Accept-Profile` header.
 
 #### 3.3.10. `render`
 A rendering hint.
