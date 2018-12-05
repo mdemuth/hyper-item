@@ -885,7 +885,7 @@ The value of the `accept-language` property may be used by the Hyper-Item client
 
 #### 3.3.9. `accept-profile`
 A localized label for the link. 
-The value of the `accept-profile` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it SHOULD be used as the `Accept-Profile` header.
+The value of the `accept-profile` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it SHOULD be used as the `Accept-Profile` header as described in [Negotiating Profiles](https://profilenegotiation.github.io/I-D-Accept--Schema/I-D-accept-schema).
 
 #### 3.3.10. `render`
 A rendering hint.
@@ -1181,4 +1181,5 @@ The details of designing and implementing Hyper-Item extensions is beyond the sc
 - [RFC 3986](https://tools.ietf.org/html/rfc3986): Uniform Resource Identifier (URI)
 - [RFC 6570](https://tools.ietf.org/html/rfc6570): URI Template
 - [RFC 2119](https://tools.ietf.org/html/rfc2119): Key words for use in RFCs to Indicate Requirement Levels
+- [Negotiating Profiles](https://profilenegotiation.github.io/I-D-Accept--Schema/I-D-accept-schema): Accpet-Profile and Profile headers
 - [http://hi.cognicraft.net](http://hi.cognicraft.net): Hyper-Item: Demo API
