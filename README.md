@@ -954,61 +954,64 @@ The name of the parameter.
 #### 3.5.2. `type`
 The type of the parameter.
 
-#### 3.5.3. `value`
+#### 3.5.3. `accept`
+The accepted file types in a file type parameter.
+
+#### 3.5.4. `value`
 The currently used or default value.
 
-#### 3.5.4. `placeholder`
+#### 3.5.5. `placeholder`
 The placeholder to use if no default value is provided.
 
-#### 3.5.5. `options`
+#### 3.5.6. `options`
 A list of [select-options](#36-select-option) or [select-groups](#37-select-group) for a select type parameter.
 
-#### 3.5.6. `related`
+#### 3.5.7. `related`
 The web-related [select-options](#36-select-option) or [select-groups](#37-select-group) for a select type parameter.
 The property MUST be a URI template as defined by [RFC 6570](https://tools.ietf.org/html/rfc6570).
 Parameters needed within this template MUST be defined in the dependencies list.
 
-#### 3.5.7. `dependencies`
+#### 3.5.8. `dependencies`
 A list of parameters that need to be set before this parameter can be set. The values of the parameters that MUST be used during the template expansion for the web-related URI.
 
-#### 3.5.8. `components`
+#### 3.5.9. `components`
 A list of [filter-components](#38-filter-component) for a filter type parameter. A list of [sort-components](#310-sort-component) for a sort type parameter. 
 
-#### 3.5.9. `pattern`
+#### 3.5.10. `pattern`
 A pattern for a text type parameter.
 
-#### 3.5.10. `min`
+#### 3.5.11. `min`
 A min value for a number or date type parameter.
 
-#### 3.5.11. `max`
+#### 3.5.12. `max`
 A max value for a number or date type parameter.
 
-#### 3.5.12. `max-length`
+#### 3.5.13. `max-length`
 
-#### 3.5.13. `size`
+#### 3.5.14. `size`
 
-#### 3.5.14. `step`
+#### 3.5.15. `step`
 The step size of number type parameters.
 
-#### 3.5.15. `cols`
+#### 3.5.16. `cols`
 The number of columns in a text-area type parameter.
 
-#### 3.5.16. `rows`
+#### 3.5.17. `rows`
 The number of rows in a text-area type parameter.
 
-#### 3.5.17. `required`
+#### 3.5.18. `required`
 Specifies if the parameter is required.
 
-#### 3.5.18. `read-only`
+#### 3.5.19. `read-only`
 Specifies if the parameter is read only.
 
-#### 3.5.19. `multiple`
+#### 3.5.20. `multiple`
 Specifies if the parameter may be set multiple times.
 
-#### 3.5.20. `label`
+#### 3.5.21. `label`
 A localized label for the link.
 
-#### 3.5.21. `description`
+#### 3.5.22. `description`
 A localized description of the link.
 
 
