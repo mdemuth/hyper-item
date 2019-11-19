@@ -810,6 +810,14 @@ A localized label for the item.
 #### 3.1.11. `description` 
 A localized description of the item.
 
+#### 3.1.12. `created` 
+A stamp object indicating when and by whom the item was created (e.g.`{"by": "author", "date": "2019-11-18T12:39:55Z"}`).
+
+- `by`: a string indicating the author that is reponsible for the creation
+- `date`: a ISO formated date string indicating when the cration happened 
+
+#### 3.1.13. `updated` 
+A stamp object indicating when and by whom the item was last updated (e.g.`{"by": "author", "date": "2019-11-18T12:39:55Z"}`).
 
 
 ### 3.2. Property
@@ -845,6 +853,9 @@ A localized string representation of the value.
 #### 3.2.7. `render`
 A rendering hint.
 - `none` in case the property SHOULD not be rendered.
+
+#### 3.2.8. `updated` 
+A stamp object indicating when and by whom the property was last updated (e.g.`{"by": "author", "date": "2019-11-18T12:39:55Z"}`).
 
 
 ### 3.3. Link
