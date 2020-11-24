@@ -80,7 +80,7 @@ Host: www.example.com
 
 - of course any additional headers that are required by the API should also be send: *Accept-Language*, *Authorization*, ...
 - The above is analogous for Action-Contributions. 
-- For Item-Contributions the parameter *injection* will be done for each of its specified links and actions. The *render* property for items may be set to *transclude* to seamlessly embed additional information for the domain-type.
+- For Item-Contributions the parameter *injection* will be done for each of its specified links and actions. The *render* property for items may include *transclude* to seamlessly embed additional information for the domain-type.
 
 
 ## Related Material

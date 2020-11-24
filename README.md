@@ -800,7 +800,7 @@ A list of [actions](#34-action) related to the item.
 A list of (sub-)items related to the item.
 
 #### 3.1.9. `render`
-A rendering hint. 
+A list of rendering hints. 
 - `none` in case the item SHOULD not be rendered. Can be used to provide local URL fragment targets that do not naturally fit into the standard tree hierarchy.
 - `transclude` in case the item SHOULD be replaced with an item targeted by a link  with `rel` to `details`. (i.e. server-side includes, edge-side includes, resource contributions).
 
@@ -851,7 +851,7 @@ A localized description of the property.
 A localized string representation of the value.
 
 #### 3.2.7. `render`
-A rendering hint.
+A list of renderinging hints.
 - `none` in case the property SHOULD not be rendered.
 
 #### 3.2.8. `updated` 
@@ -899,7 +899,7 @@ A localized label for the link.
 The value of the `accept-profile` property may be used by the Hyper-Item client to aid in content negotiation. If a value is specified it SHOULD be used as the `Accept-Profile` header as described in [Negotiating Profiles](https://profilenegotiation.github.io/I-D-Accept--Schema/I-D-accept-schema).
 
 #### 3.3.10. `render`
-A rendering hint.
+A list of rendering hints.
 - `none` in case the link SHOULD not be rendered (candidate: `rel: profile`).
 - `transclude` in case the content returned from the URL SHOULD be embedded into the current [item](#31-item).
 
@@ -953,7 +953,7 @@ A localized ok/submit label for the action.
 A localized cancel label for the action.
 
 #### 3.4.11. `render`
-A rendering hint. 
+A list of rendering hints. 
 - `none` in case the action SHOULD not be rendered.
 
 
